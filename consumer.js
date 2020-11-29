@@ -1,5 +1,7 @@
 const { Kafka } = require("kafkajs");
 
+const topicName = process.argv[2] || "Log2";
+
 getMessages();
 
 async function getMessages() {
@@ -19,7 +21,7 @@ async function getMessages() {
         console.log("Connected to Apache Kafka Consumer");
 
         await kafkaConsumer.subscribe({
-            topic: "Log",
+            topic: topicName,
             fromBeginning: true
         });
 

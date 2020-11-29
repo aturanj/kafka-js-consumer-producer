@@ -5,6 +5,7 @@ createTopic();
 async function createTopic() {
 
     try {
+        
         const kafka = new Kafka({
             clientId: "kafka_client_1",
             brokers: ["10.11.0.96:9092"]
@@ -19,11 +20,11 @@ async function createTopic() {
         await kafkaAdmin.createTopics({
             topics: [
                 {
-                    topic: "Log",
+                    topic: "Log1",
                     numPartitions: 1
                 },
                 {
-                    topic: "User",
+                    topic: "Log2",
                     numPartitions: 2
                 }
             ]

@@ -1,5 +1,8 @@
 const { Kafka } = require("kafkajs");
 
+const topicName = process.argv[2] || "Log2";
+const partitionNumber = process.argv[3] || 0;
+
 sendMessage();
 
 async function sendMessage() {
@@ -17,10 +20,12 @@ async function sendMessage() {
         console.log("Connected to Apache Kafka Producer");
 
         const result = await kafkaProducer.send({
-            topic: "Log",
+
+            topic: topicName,
+
             messages: [{
                 value: "This message belong to Log topic",
-                partition: 0 //first partition
+                partition: partitionNumber
             }]
         });
 
